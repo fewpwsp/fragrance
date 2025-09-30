@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AromaShop - Вход и регистрация</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ff69b4;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #8a2be2;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            margin-left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        /* Основной контент */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 40px 0;
+        }
+        
+        .auth-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .auth-tab.active {
+            color: #8a2be2;
+            border-bottom: 2px solid #8a2be2;
+        }
+        
+        .auth-form {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #8a2be2;
+            outline: none;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password {
+            color: #8a2be2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .auth-btn:hover {
+            background-color: #6a1cb0;
+        }
+        
+        .social-auth {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-auth p {
+            margin-bottom: 15px;
+            color: #888;
+            position: relative;
+        }
+        
+        .social-auth p::before,
+        .social-auth p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: #eee;
+        }
+        
+        .social-auth p::before {
+            left: 0;
+        }
+        
+        .social-auth p::after {
+            right: 0;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .google-btn {
+            color: #DB4437;
+        }
+        
+        .facebook-btn {
+            color: #4267B2;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            color: #888;
+        }
+        
+        .auth-footer a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0 15px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        /* Анимации */
+        .form-container {
+            transition: transform 0.3s ease;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+            }
+            
+            .auth-form {
+                padding: 20px;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .forgot-password {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Aroma<span>Shop</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="brands.html">Бренды</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <div class="icon search">🔍</div>
+                    <div class="icon user">👤</div>
+                    <div class="icon cart">🛒</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="auth-container">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="login-tab">Вход</button>
+                <button class="auth-tab" id="register-tab">Регистрация</button>
+            </div>
+            
+            <!-- Форма входа -->
+            <div class="form-container" id="login-form">
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Введите ваш email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <div class="password-container">
+                            <input type="password" id="login-password" placeholder="Введите ваш пароль" required>
+                            <button type="button" class="toggle-password" data-target="login-password">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Запомнить меня</label>
+                        </div>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Войти</button>
+                    
+                    <div class="social-auth">
+                        <p>Или войдите с помощью</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn google-btn">G</button>
+                            <button type="button" class="social-btn facebook-btn">f</button>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Нет аккаунта? <a href="#" id="to-register">Зарегистрироваться</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Форма регистрации -->
+            <div class="form-container hidden" id="register-form">
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Имя</label>
+                        <input type="text" id="register-name" placeholder="Введите ваше имя" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" placeholder="Введите ваш email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password">Пароль</label>
+                        <div class="password-container">
+                            <input type="password" id="register-password" placeholder="Придумайте пароль" required>
+                            <button type="button" class="toggle-password" data-target="register-password">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-confirm-password">Подтвердите пароль</label>
+                        <div class="password-container">
+                            <input type="password" id="register-confirm-password" placeholder="Повторите пароль" required>
+                            <button type="button" class="toggle-password" data-target="register-confirm-password">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="checkbox" id="agree-terms" required>
+                        <label for="agree-terms">Я согласен с <a href="#">условиями использования</a> и <a href="#">политикой конфиденциальности</a></label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Зарегистрироваться</button>
+                    
+                    <div class="social-auth">
+                        <p>Или зарегистрируйтесь с помощью</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn google-btn">G</button>
+                            <button type="button" class="social-btn facebook-btn">f</button>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Уже есть аккаунт? <a href="#" id="to-login">Войти</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О магазине</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="catalog.html?category=women">Женская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=men">Мужская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=niche">Нишевая парфюмерия</a></li>
+                        <li><a href="catalog.html?category=gifts">Подарочные наборы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Как выбрать аромат</a></li>
+                        <li><a href="#">Правила хранения</a></li>
+                        <li><a href="#">Публичная оферта</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (999) 123-45-67</li>
+                        <li>✉️ info@aromashop.ru</li>
+                        <li>📍 г. Москва, ул. Парфюмерная, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AromaShop. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Переключение между формами входа и регистрации
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const toRegisterLink = document.getElementById('to-register');
+        const toLoginLink = document.getElementById('to-login');
+        
+        function showLoginForm() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        }
+        
+        function showRegisterForm() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+        
+        loginTab.addEventListener('click', showLoginForm);
+        registerTab.addEventListener('click', showRegisterForm);
+        toRegisterLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showRegisterForm();
+        });
+        toLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginForm();
+        });
+        
+        // Переключение видимости пароля
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.textContent = '🔒';
+                } else {
+                    passwordInput.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+        });
+        
+        // Обработка формы входа
+        document.querySelector('#login-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Здесь должна быть логика отправки данных на сервер
+            // Для демонстрации просто покажем сообщение
+            alert(`Вход выполнен!\nEmail: ${email}\nПароль: ${password}`);
+            
+            // В реальном приложении здесь будет перенаправление на главную страницу
+            // window.location.href = 'index.html';
+        });
+        
+        // Обработка формы регистрации
+        document.querySelector('#register-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            // Проверка совпадения паролей
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            
+            // Проверка согласия с условиями
+            if (!document.getElementById('agree-terms').checked) {
+                alert('Необходимо согласиться с условиями использования!');
+                return;
+            }
+            
+            // Здесь должна быть логика отправки данных на сервер
+            // Для демонстрации просто покажем сообщение
+            alert(`Регистрация завершена!\nИмя: ${name}\nEmail: ${email}`);
+            
+            // Переключение на форму входа после успешной регистрации
+            showLoginForm();
+        });
+        
+        // Обработка кнопок социальных сетей
+        document.querySelectorAll('.social-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const isGoogle = this.classList.contains('google-btn');
+                alert(`Вход через ${isGoogle ? 'Google' : 'Facebook'} будет реализован позже`);
+            });
+        });
+        
+        // Обработка ссылки "Забыли пароль?"
+        document.querySelector('.forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Функция восстановления пароля будет реализована позже');
+        });
+    </script>
+</body>
+</html>

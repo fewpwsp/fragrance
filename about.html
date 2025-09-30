@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AromaShop - О нас</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ff69b4;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #8a2be2;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            margin-left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Хлебные крошки */
+        .breadcrumbs {
+            padding: 15px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumbs a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs span {
+            margin: 0 5px;
+        }
+        
+        /* Заголовок страницы */
+        .page-title {
+            text-align: center;
+            margin: 20px 0 40px;
+            font-size: 36px;
+            color: #333;
+        }
+        
+        /* Основной контент */
+        .about-content {
+            margin-bottom: 60px;
+        }
+        
+        /* Блок с миссией */
+        .mission-section {
+            background: linear-gradient(135deg, #8a2be2, #ff69b4);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 60px;
+            border-radius: 10px;
+        }
+        
+        .mission-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .mission-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Преимущества */
+        .features-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #8a2be2;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        /* История компании */
+        .history-section {
+            margin-bottom: 60px;
+        }
+        
+        .history-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #8a2be2;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: calc(50% - 40px);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #8a2be2;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 1;
+        }
+        
+        /* Команда */
+        .team-section {
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            color: #8a2be2;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        /* Отзывы */
+        .testimonials-section {
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 100%;
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #8a2be2;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: #8a2be2;
+        }
+        
+        /* Контактная информация */
+        .contact-section {
+            margin-bottom: 60px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #8a2be2;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-details li i {
+            margin-right: 10px;
+            color: #8a2be2;
+            font-size: 18px;
+        }
+        
+        .map-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .map-placeholder {
+            background-color: #f0f0f0;
+            height: 300px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        /* Корзина */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: #8a2be2;
+            font-weight: 600;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #6a1cb0;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+            }
+            
+            .mission-section {
+                padding: 40px 0;
+            }
+            
+            .mission-section h2 {
+                font-size: 28px;
+            }
+            
+            .history-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+            
+            .timeline-year {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Aroma<span>Shop</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="brands.html">Бренды</a></li>
+                        <li><a href="about.html" class="active">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <div class="icon search">🔍</div>
+                    <div class="icon user">👤</div>
+                    <div class="icon cart" id="cart-icon">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> <span>></span> <span>О нас</span>
+        </div>
+    </div>
+
+    <!-- Заголовок страницы -->
+    <div class="container">
+        <h1 class="page-title">О компании AromaShop</h1>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Блок с миссией -->
+        <section class="mission-section">
+            <div class="container">
+                <h2>Наша миссия</h2>
+                <p>Мы помогаем каждому человеку найти свой уникальный аромат, который станет неотъемлемой частью его образа и будет отражать индивидуальность. Наша цель - сделать мир парфюмерии доступным и понятным для каждого.</p>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="features-section">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Натуральные ингредиенты</h3>
+                    <p>Мы тщательно отбираем парфюмы, созданные из натуральных компонентов высочайшего качества.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставляем заказы по всей России в кратчайшие сроки - от 1 до 3 дней.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Эксклюзивные бренды</h3>
+                    <p>Предлагаем уникальные нишевые ароматы, которые не найти в обычных магазинах.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👃</div>
+                    <h3>Профессиональные консультации</h3>
+                    <p>Наши эксперты помогут подобрать аромат, идеально подходящий именно вам.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- История компании -->
+        <section class="history-section">
+            <h2 class="section-title">Наша история</h2>
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Основание компании</h3>
+                        <p>AromaShop была основана в 2010 году как небольшой бутик эксклюзивной парфюмерии в центре Москвы.</p>
+                    </div>
+                    <div class="timeline-year">2010</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Запуск интернет-магазина</h3>
+                        <p>В 2014 году мы запустили онлайн-платформу, чтобы делиться любовью к парфюмерии с клиентами по всей России.</p>
+                    </div>
+                    <div class="timeline-year">2014</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Расширение ассортимента</h3>
+                        <p>К 2017 году наш ассортимент вырос до 500+ позиций, включая эксклюзивные нишевые бренды из Европы и США.</p>
+                    </div>
+                    <div class="timeline-year">2017</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Новый флагманский магазин</h3>
+                        <p>В 2020 году мы открыли новый просторный магазин с зоной тестирования ароматов и консультационной зоной.</p>
+                    </div>
+                    <div class="timeline-year">2020</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Международное признание</h3>
+                        <p>В 2023 году AromaShop получила награду "Лучший парфюмерный ритейлер года" по версии Fragrance Foundation.</p>
+                    </div>
+                    <div class="timeline-year">2023</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Команда -->
+        <section class="team-section">
+            <h2 class="section-title">Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Анна Петрова" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Анна Петрова</h3>
+                        <p class="member-position">Основатель и CEO</p>
+                        <p>Сертифицированный парфюмерный эксперт с 15-летним опытом в индустрии.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Максим Иванов" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Максим Иванов</h3>
+                        <p class="member-position">Главный парфюмер</p>
+                        <p>Выпускник Grasse Institute of Perfumery, создатель нескольких эксклюзивных ароматов.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Елена Смирнова" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Елена Смирнова</h3>
+                        <p class="member-position">Менеджер по клиентскому сервису</p>
+                        <p>Специалист с 10-летним опытом, всегда готова помочь с выбором идеального аромата.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Дмитрий Козлов" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Дмитрий Козлов</h3>
+                        <p class="member-position">Менеджер по закупкам</p>
+                        <p>Отвечает за формирование ассортимента и поиск эксклюзивных брендов по всему миру.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="testimonials-section">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonials-track">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Я давно искала свой идеальный аромат, и консультанты AromaShop помогли мне найти именно то, что нужно! Теперь это мой любимый парфюм, который вызывает комплименты каждый раз, когда я его использую."</p>
+                        <p class="testimonial-author">— Мария, Москва</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Заказывал парфюм в подарок жене. Доставка была быстрой, упаковка красивой, а сам аромат - просто волшебный. Жена в восторге! Обязательно буду заказывать еще."</p>
+                        <p class="testimonial-author">— Алексей, Санкт-Петербург</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Как коллекционер нишевой парфюмерии, я ценю ассортимент AromaShop. Здесь всегда можно найти что-то особенное, чего нет в масс-маркете. Качество обслуживания на высшем уровне!"</p>
+                        <p class="testimonial-author">— Ольга, Екатеринбург</p>
+                    </div>
+                </div>
+                <div class="slider-nav" id="slider-nav">
+                    <div class="slider-dot active" data-index="0"></div>
+                    <div class="slider-dot" data-index="1"></div>
+                    <div class="slider-dot" data-index="2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контактная информация -->
+        <section class="contact-section">
+            <h2 class="section-title">Наши контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <ul class="contact-details">
+                        <li><i>📞</i> +7 (999) 123-45-67</li>
+                        <li><i>✉️</i> info@aromashop.ru</li>
+                        <li><i>📍</i> г. Москва, ул. Парфюмерная, 15</li>
+                        <li><i>🕒</i> Пн-Пт: 10:00-21:00, Сб-Вс: 11:00-20:00</li>
+                    </ul>
+                </div>
+                <div class="map-container">
+                    <h3>Мы на карте</h3>
+                    <div class="map-placeholder">
+                        Карта: г. Москва, ул. Парфюмерная, 15
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О магазине</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="catalog.html?category=women">Женская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=men">Мужская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=niche">Нишевая парфюмерия</a></li>
+                        <li><a href="catalog.html?category=gifts">Подарочные наборы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Как выбрать аромат</a></li>
+                        <li><a href="#">Правила хранения</a></li>
+                        <li><a href="#">Публичная оферта</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (999) 123-45-67</li>
+                        <li>✉️ info@aromashop.ru</li>
+                        <li>📍 г. Москва, ул. Парфюмерная, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AromaShop. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Корзина</h2>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Товары в корзине будут добавлены через JavaScript -->
+        </div>
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total-price">0 руб.</span>
+        </div>
+        <button class="checkout-btn">Оформить заказ</button>
+    </div>
+
+    <script>
+        // Данные о товарах (для корзины)
+        const products = [
+            {
+                id: 1,
+                name: "Coco Mademoiselle",
+                brand: "Chanel",
+                price: 7500,
+                image: "https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            },
+            {
+                id: 2,
+                name: "Sauvage",
+                brand: "Dior",
+                price: 6800,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            }
+        ];
+
+        // Корзина
+        let cart = [];
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+
+        // Слайдер отзывов
+        const testimonialsTrack = document.getElementById('testimonials-track');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        // Функция для переключения слайдов
+        function goToSlide(index) {
+            currentSlide = index;
+            testimonialsTrack.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Обновление активной точки
+            sliderDots.forEach(dot => dot.classList.remove('active'));
+            sliderDots[index].classList.add('active');
+        }
+
+        // Добавление обработчиков событий для точек слайдера
+        sliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                goToSlide(index);
+            });
+        });
+
+        // Автоматическое переключение слайдов
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % sliderDots.length;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Добавление товара в корзину (для демонстрации)
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${product.name} добавлен в корзину`);
+        }
+
+        // Удаление товара из корзины
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Обновление корзины
+        function updateCart() {
+            // Обновление счетчика товаров
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Обновление содержимого корзины
+            cartItemsContainer.innerHTML = '';
+            let totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Корзина пуста</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <p class="cart-item-price">${item.price} руб. x ${item.quantity}</p>
+                            <button class="cart-item-remove" data-id="${item.id}">Удалить</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price * item.quantity;
+                });
+                
+                // Добавление обработчиков событий для кнопок удаления
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        removeFromCart(productId);
+                    });
+                });
+            }
+            
+            // Обновление общей стоимости
+            cartTotalPrice.textContent = `${totalPrice} руб.`;
+        }
+
+        // Показать уведомление
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #8a2be2;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 1001;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        

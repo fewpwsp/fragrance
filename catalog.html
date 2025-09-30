@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AromaShop - Каталог парфюмерии</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ff69b4;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #8a2be2;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            margin-left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Хлебные крошки */
+        .breadcrumbs {
+            padding: 15px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumbs a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs span {
+            margin: 0 5px;
+        }
+        
+        /* Заголовок страницы */
+        .page-title {
+            text-align: center;
+            margin: 20px 0 40px;
+            font-size: 36px;
+            color: #333;
+        }
+        
+        /* Панель управления каталогом */
+        .catalog-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-toggle {
+            display: none;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .results-count {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sort-options select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .view-btn.active {
+            background-color: #8a2be2;
+            color: white;
+            border-color: #8a2be2;
+        }
+        
+        /* Основной контент каталога */
+        .catalog-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* Боковая панель фильтров */
+        .filters-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .filters-sidebar.hidden {
+            transform: translateX(-100%);
+            position: absolute;
+            z-index: 10;
+            background: white;
+            height: 100%;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .filter-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #8a2be2;
+        }
+        
+        .filter-options {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .filter-options.collapsed {
+            display: none;
+        }
+        
+        .filter-options li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .filter-options input {
+            margin-right: 10px;
+        }
+        
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .price-input {
+            width: 45%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .filter-btn {
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .filter-btn:hover {
+            background-color: #6a1cb0;
+        }
+        
+        .reset-filters {
+            background-color: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: 5px;
+        }
+        
+        .reset-filters:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Сетка товаров */
+        .products-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .products-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card.list-view {
+            flex-direction: row;
+            height: 200px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .product-card.list-view .product-image {
+            width: 200px;
+            height: 100%;
+            flex-shrink: 0;
+        }
+        
+        .product-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card.list-view .product-info {
+            padding: 20px;
+            justify-content: space-between;
+        }
+        
+        .product-brand {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-card.list-view .product-name {
+            height: auto;
+            margin-bottom: 5px;
+        }
+        
+        .product-volume {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #8a2be2;
+            margin-bottom: 15px;
+        }
+        
+        .product-card.list-view .product-price {
+            margin-bottom: 0;
+        }
+        
+        .add-to-cart {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+        
+        .product-card.list-view .add-to-cart {
+            width: auto;
+            min-width: 150px;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e0559e;
+        }
+        
+        .product-card.list-view .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        /* Состояние загрузки */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            grid-column: 1 / -1;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(138, 43, 226, 0.2);
+            border-left: 4px solid #8a2be2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .pagination button {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            min-width: 40px;
+        }
+        
+        .pagination button.active {
+            background-color: #8a2be2;
+            color: white;
+            border-color: #8a2be2;
+        }
+        
+        .pagination button:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        /* Корзина */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: #8a2be2;
+            font-weight: 600;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #6a1cb0;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .catalog-container {
+                flex-direction: column;
+            }
+            
+            .filters-sidebar {
+                width: 100%;
+                position: static;
+                transform: none;
+            }
+            
+            .filter-toggle {
+                display: block;
+            }
+            
+            .filters-sidebar.hidden {
+                display: none;
+            }
+            
+            .filter-section {
+                display: inline-block;
+                width: calc(50% - 10px);
+                vertical-align: top;
+                margin-right: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .catalog-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .filter-section {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .product-card.list-view {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .product-card.list-view .product-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .product-card.list-view .product-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .product-card.list-view .add-to-cart {
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .cart-modal {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pagination button {
+                padding: 6px 10px;
+                min-width: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Aroma<span>Shop</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html" class="active">Каталог</a></li>
+                        <li><a href="brands.html">Бренды</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <div class="icon search">🔍</div>
+                    <div class="icon user">👤</div>
+                    <div class="icon cart" id="cart-icon">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> <span>></span> <a href="catalog.html">Каталог</a> <span>></span> <span>Все товары</span>
+        </div>
+    </div>
+
+    <!-- Заголовок страницы -->
+    <div class="container">
+        <h1 class="page-title">Каталог парфюмерии</h1>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Панель управления каталогом -->
+        <div class="catalog-controls">
+            <button class="filter-toggle" id="filter-toggle">Фильтры</button>
+            <div class="results-count" id="results-count">Найдено товаров: 12</div>
+            <div class="sort-options">
+                <label for="sort-by">Сортировка:</label>
+                <select id="sort-by">
+                    <option value="popular">По популярности</option>
+                    <option value="price-low">Сначала дешевые</option>
+                    <option value="price-high">Сначала дорогие</option>
+                    <option value="name">По названию</option>
+                    <option value="new">Сначала новые</option>
+                </select>
+            </div>
+            <div class="view-options">
+                <button class="view-btn active" data-view="grid">Сетка</button>
+                <button class="view-btn" data-view="list">Список</button>
+            </div>
+        </div>
+        
+        <div class="catalog-container">
+            <!-- Боковая панель фильтров -->
+            <aside class="filters-sidebar" id="filters-sidebar">
+                <div class="filter-section">
+                    <h3 class="filter-title">Категории</h3>
+                    <ul class="filter-options">
+                        <li><input type="checkbox" id="category-women" checked> <label for="category-women">Женская парфюмерия</label></li>
+                        <li><input type="checkbox" id="category-men" checked> <label for="category-men">Мужская парфюмерия</label></li>
+                        <li><input type="checkbox" id="category-unisex" checked> <label for="category-unisex">Унисекс</label></li>
+                        <li><input type="checkbox" id="category-niche"> <label for="category-niche">Нишевая парфюмерия</label></li>
+                    </ul>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">
+                        Бренды
+                        <button class="filter-toggle-btn" data-target="brands">−</button>
+                    </h3>
+                    <ul class="filter-options" id="brands-filter">
+                        <li><input type="checkbox" id="brand-chanel"> <label for="brand-chanel">Chanel</label></li>
+                        <li><input type="checkbox" id="brand-dior"> <label for="brand-dior">Dior</label></li>
+                        <li><input type="checkbox" id="brand-ysl"> <label for="brand-ysl">Yves Saint Laurent</label></li>
+                        <li><input type="checkbox" id="brand-gucci"> <label for="brand-gucci">Gucci</label></li>
+                        <li><input type="checkbox" id="brand-tomford"> <label for="brand-tomford">Tom Ford</label></li>
+                        <li><input type="checkbox" id="brand-hermes"> <label for="brand-hermes">Hermès</label></li>
+                        <li><input type="checkbox" id="brand-armani"> <label for="brand-armani">Giorgio Armani</label></li>
+                        <li><input type="checkbox" id="brand-lancome"> <label for="brand-lancome">Lancôme</label></li>
+                    </ul>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Цена</h3>
+                    <div class="price-range">
+                        <input type="number" class="price-input" id="min-price" placeholder="0" min="0" max="20000">
+                        <span>-</span>
+                        <input type="number" class="price-input" id="max-price" placeholder="20000" min="0" max="20000">
+                    </div>
+                    <button class="filter-btn" id="apply-filters">Применить фильтры</button>
+                    <button class="reset-filters" id="reset-filters">Сбросить фильтры</button>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Объем</h3>
+                    <ul class="filter-options">
+                        <li><input type="checkbox" id="volume-30"> <label for="volume-30">30 мл</label></li>
+                        <li><input type="checkbox" id="volume-50"> <label for="volume-50">50 мл</label></li>
+                        <li><input type="checkbox" id="volume-100"> <label for="volume-100">100 мл</label></li>
+                    </ul>
+                </div>
+            </aside>
+            
+            <!-- Сетка товаров -->
+            <section class="products-grid" id="products-container">
+                <!-- Товары будут добавлены через JavaScript -->
+            </section>
+        </div>
+        
+        <!-- Пагинация -->
+        <div class="pagination" id="pagination">
+            <!-- Кнопки пагинации будут добавлены через JavaScript -->
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О магазине</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="catalog.html?category=women">Женская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=men">Мужская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=niche">Нишевая парфюмерия</a></li>
+                        <li><a href="catalog.html?category=gifts">Подарочные наборы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Как выбрать аромат</a></li>
+                        <li><a href="#">Правила хранения</a></li>
+                        <li><a href="#">Публичная оферта</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (999) 123-45-67</li>
+                        <li>✉️ info@aromashop.ru</li>
+                        <li>📍 г. Москва, ул. Парфюмерная, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AromaShop. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Корзина</h2>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Товары в корзине будут добавлены через JavaScript -->
+        </div>
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total-price">0 руб.</span>
+        </div>
+        <button class="checkout-btn">Оформить заказ</button>
+    </div>
+
+    <script>
+        // Данные о товарах
+        const products = [
+            {
+                id: 1,
+                name: "Coco Mademoiselle",
+                brand: "Chanel",
+                category: "women",
+                price: 7500,
+                volume: 100,
+                image: "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/coco-mademoiselle-eau-de-parfum-spray-3-4fl-oz--packshot-default-116520-9564892495902.jpg",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 2,
+                name: "Sauvage",
+                brand: "Dior",
+                category: "men",
+                price: 6800,
+                volume: 100,
+                image: "https://images.squarespace-cdn.com/content/v1/66fb1b297e0c2a7a3dee106a/78eed956-cf5c-42c2-abde-8eed052ce17f/diorsavageparfum.png?format=1500w",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 3,
+                name: "Black Opium",
+                brand: "Yves Saint Laurent",
+                category: "women",
+                price: 7200,
+                volume: 90,
+                image: "https://www.yslbeauty.com/dw/image/v2/BDCR_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw31700bf0/square/Fragrance/For%20Her/Black_Opium/3365440787919_black-opium-eau-de-parfum_50ml_Alt1.png",
+                popular: true,
+                isNew: true
+            },
+            {
+                id: 4,
+                name: "Bloom",
+                brand: "Gucci",
+                category: "women",
+                price: 6500,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: false,
+                isNew: false
+            },
+            {
+                id: 5,
+                name: "Noir",
+                brand: "Tom Ford",
+                category: "men",
+                price: 8900,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 6,
+                name: "Terre d'Hermès",
+                brand: "Hermès",
+                category: "men",
+                price: 7800,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: false,
+                isNew: true
+            },
+            {
+                id: 7,
+                name: "J'adore",
+                brand: "Dior",
+                category: "women",
+                price: 7200,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 8,
+                name: "Bleu de Chanel",
+                brand: "Chanel",
+                category: "men",
+                price: 8200,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 9,
+                name: "Libre",
+                brand: "Yves Saint Laurent",
+                category: "women",
+                price: 7400,
+                volume: 90,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: false,
+                isNew: true
+            },
+            {
+                id: 10,
+                name: "Guilty",
+                brand: "Gucci",
+                category: "unisex",
+                price: 6900,
+                volume: 90,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: true,
+                isNew: false
+            },
+            {
+                id: 11,
+                name: "Acqua di Gio",
+                brand: "Giorgio Armani",
+                category: "men",
+                price: 6500,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: false,
+                isNew: false
+            },
+            {
+                id: 12,
+                name: "La Vie Est Belle",
+                brand: "Lancôme",
+                category: "women",
+                price: 7100,
+                volume: 100,
+                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                popular: true,
+                isNew: false
+            }
+        ];
+
+        // Глобальные переменные
+        let cart = [];
+        let filteredProducts = [...products];
+        let currentPage = 1;
+        const productsPerPage = 8;
+        let isListView = false;
+
+        // DOM элементы
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        const productsContainer = document.getElementById('products-container');
+        const paginationContainer = document.getElementById('pagination');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+        const sortBySelect = document.getElementById('sort-by');
+        const filterToggle = document.getElementById('filter-toggle');
+        const filtersSidebar = document.getElementById('filters-sidebar');
+        const resultsCount = document.getElementById('results-count');
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const filterToggleButtons = document.querySelectorAll('.filter-toggle-btn');
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts();
+            updateCart();
+            setupEventListeners();
+        });
+
+        // Настройка обработчиков событий
+        function setupEventListeners() {
+            // Фильтрация
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            resetFiltersBtn.addEventListener('click', resetFilters);
+            
+            // Сортировка
+            sortBySelect.addEventListener('change', applyFilters);
+            
+            // Переключение вида
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const view = btn.getAttribute('data-view');
+                    toggleView(view);
+                });
+            });
+            
+            // Переключение фильтров на мобильных устройствах
+            filterToggle.addEventListener('click', () => {
+                filtersSidebar.classList.toggle('hidden');
+            });
+            
+            // Сворачивание/разворачивание секций фильтров
+            filterToggleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const targetElement = document.getElementById(`${targetId}-filter`);
+                    if (targetElement) {
+                        targetElement.classList.toggle('collapsed');
+                        btn.textContent = targetElement.classList.contains('collapsed') ? '+' : '−';
+                    }
+                });
+            });
+            
+            // Корзина
+            cartIcon.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartModal);
+            overlay.addEventListener('click', closeCartModal);
+            
+            // Закрытие корзины при нажатии Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeCartModal();
+                }
+            });
+        }
+
+        // Отображение товаров
+        function displayProducts(productsToShow = filteredProducts, page = 1) {
+            productsContainer.innerHTML = '';
+            
+            // Показываем индикатор загрузки
+            if (productsToShow.length === 0) {
+                productsContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+                setTimeout(() => {
+                    productsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px;">Товары не найдены</p>';
+                }, 500);
+                updatePagination(0, page);
+                updateResultsCount(0);
+                return;
+            }
+            
+            // Вычисляем индексы для текущей страницы
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const paginatedProducts = productsToShow.slice(startIndex, endIndex);
+            
+            // Имитация загрузки для лучшего UX
+            productsContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            setTimeout(() => {
+                productsContainer.innerHTML = '';
+                
+                paginatedProducts.forEach(product => {
+                    const productElement = createProductElement(product);
+                    productsContainer.appendChild(productElement);
+                });
+                
+                // Обновление счетчика результатов
+                updateResultsCount(productsToShow.length);
+                
+                // Обновление пагинации
+                updatePagination(productsToShow.length, page);
+            }, 300);
+        }
+
+        // Создание элемента товара
+        function createProductElement(product) {
+            const productElement = document.createElement('div');
+            productElement.classList.add('product-card');
+            if (isListView) {
+                productElement.classList.add('list-view');
+            }
+            
+            let productHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                    <p class="product-brand">${product.brand}</p>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-volume">${product.volume} мл</p>
+                    <p class="product-price">${product.price} руб.</p>
+            `;
+            
+            if (isListView) {
+                productHTML += `
+                    <div class="product-details">
+                        <div>
+                            ${product.isNew ? '<span style="color:#ff69b4; font-size:14px; font-weight:600;">НОВИНКА</span>' : ''}
+                            ${product.popular ? '<span style="color:#8a2be2; font-size:14px; font-weight:600;">ПОПУЛЯРНЫЙ</span>' : ''}
+                        </div>
+                        <button class="add-to-cart" data-id="${product.id}">Добавить в корзину</button>
+                    </div>
+                `;
+            } else {
+                productHTML += `
+                    <button class="add-to-cart" data-id="${product.id}">Добавить в корзину</button>
+                `;
+            }
+            
+            productHTML += `</div>`;
+            productElement.innerHTML = productHTML;
+            
+            // Добавление обработчика для кнопки "Добавить в корзину"
+            const addToCartBtn = productElement.querySelector('.add-to-cart');
+            addToCartBtn.addEventListener('click', (e) => {
+                const productId = parseInt(e.target.getAttribute('data-id'));
+                addToCart(productId);
+            });
+            
+            return productElement;
+        }
+
+        // Обновление пагинации
+        function updatePagination(totalProducts, currentPage) {
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+            paginationContainer.innerHTML = '';
+            
+            if (totalPages <= 1) return;
+            
+            // Кнопка "Назад"
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '←';
+            prevButton.disabled = currentPage === 1;
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    displayProducts(filteredProducts, currentPage - 1);
+                }
+            });
+            paginationContainer.appendChild(prevButton);
+            
+            // Номера страниц
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.addEventListener('click', () => {
+                    displayProducts(filteredProducts, i);
+                });
+                paginationContainer.appendChild(pageButton);
+            }
+            
+            // Кнопка "Вперед"
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '→';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    displayProducts(filteredProducts, currentPage + 1);
+                }
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+
+        // Обновление счетчика результатов
+        function updateResultsCount(count) {
+            resultsCount.textContent = `Найдено товаров: ${count}`;
+        }
+
+        // Применение фильтров
+        function applyFilters() {
+            // Получаем выбранные категории
+            const selectedCategories = [];
+            if (document.getElementById('category-women').checked) selectedCategories.push('women');
+            if (document.getElementById('category-men').checked) selectedCategories.push('men');
+            if (document.getElementById('category-unisex').checked) selectedCategories.push('unisex');
+            if (document.getElementById('category-niche').checked) selectedCategories.push('niche');
+            
+            // Получаем выбранные бренды
+            const selectedBrands = [];
+            if (document.getElementById('brand-chanel').checked) selectedBrands.push('Chanel');
+            if (document.getElementById('brand-dior').checked) selectedBrands.push('Dior');
+            if (document.getElementById('brand-ysl').checked) selectedBrands.push('Yves Saint Laurent');
+            if (document.getElementById('brand-gucci').checked) selectedBrands.push('Gucci');
+            if (document.getElementById('brand-tomford').checked) selectedBrands.push('Tom Ford');
+            if (document.getElementById('brand-hermes').checked) selectedBrands.push('Hermès');
+            if (document.getElementById('brand-armani').checked) selectedBrands.push('Giorgio Armani');
+            if (document.getElementById('brand-lancome').checked) selectedBrands.push('Lancôme');
+            
+            // Получаем диапазон цен
+            const minPrice = document.getElementById('min-price').value ? parseInt(document.getElementById('min-price').value) : 0;
+            const maxPrice = document.getElementById('max-price').value ? parseInt(document.getElementById('max-price').value) : 20000;
+            
+            // Получаем выбранные объемы
+            const selectedVolumes = [];
+            if (document.getElementById('volume-30').checked) selectedVolumes.push(30);
+            if (document.getElementById('volume-50').checked) selectedVolumes.push(50);
+            if (document.getElementById('volume-100').checked) selectedVolumes.push(100);
+            
+            // Применяем фильтры
+            filteredProducts = products.filter(product => {
+                // Фильтр по категории
+                if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+                    return false;
+                }
+                
+                // Фильтр по бренду
+                if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
+                    return false;
+                }
+                
+                // Фильтр по цене
+                if (product.price < minPrice || product.price > maxPrice) {
+                    return false;
+                }
+                
+                // Фильтр по объему
+                if (selectedVolumes.length > 0 && !selectedVolumes.includes(product.volume)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Сортировка
+            const sortBy = sortBySelect.value;
+            sortProducts(sortBy);
+            
+            // Сбрасываем на первую страницу и отображаем товары
+            currentPage = 1;
+            displayProducts(filteredProducts, currentPage);
+        }
+
+        // Сортировка товаров
+        function sortProducts(sortBy) {
+            switch (sortBy) {
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'new':
+                    filteredProducts.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+                    break;
+                case 'popular':
+                default:
+                    filteredProducts.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+                    break;
+            }
+        }
+
+        // Сброс фильтров
+        function resetFilters() {
+            // Сбрасываем все чекбоксы
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Устанавливаем чекбоксы категорий по умолчанию
+            document.getElementById('category-women').checked = true;
+            document.getElementById('category-men').checked = true;
+            document.getElementById('category-unisex').checked = true;
+            
+            // Сбрасываем поля цены
+            document.getElementById('min-price').value = '';
+            document.getElementById('max-price').value = '';
+            
+            // Сбрасываем сортировку
+            sortBySelect.value = 'popular';
+            
+            // Применяем сброшенные фильтры
+            applyFilters();
+        }
+
+        // Переключение вида (сетка/список)
+        function toggleView(view) {
+            isListView = view === 'list';
+            
+            // Обновляем активную кнопку
+            viewButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+            });
+            
+            // Обновляем класс контейнера
+            productsContainer.classList.toggle('list-view', isListView);
+            
+            // Перерисовываем товары
+            displayProducts(filteredProducts, currentPage);
+        }
+
+        // Добавление товара в корзину
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${product.name} добавлен в корзину`);
+        }
+
+        // Удаление товара из корзины
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Обновление корзины
+        function updateCart() {
+            // Обновление счетчика товаров
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Обновление содержимого корзины
+            cartItemsContainer.innerHTML = '';
+            let totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Корзина пуста</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <p class="cart-item-price">${item.price} руб. x ${item.quantity}</p>
+                            <button class="cart-item-remove" data-id="${item.id}">Удалить</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price * item.quantity;
+                });
+                
+                // Добавление обработчиков событий для кнопок удаления
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        removeFromCart(productId);
+                    });
+                });
+            }
+            
+            // Обновление общей стоимости
+            cartTotalPrice.textContent = `${totalPrice} руб.`;
+        }
+
+        // Показать уведомление
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #8a2be2;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 1001;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Открытие корзины
+        function openCart() {
+            cartModal.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Закрытие корзины
+        function closeCartModal() {
+            cartModal.style.display = 'none';
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
