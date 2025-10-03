@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AromaShop - Магазин парфюмерии</title>
     <style>
-        /* Общие стили */
+        
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
             padding: 0 15px;
         }
         
-        /* Шапка сайта */
+        
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -100,7 +100,7 @@
             align-items: center;
         }
         
-        /* Баннер */
+        
         .banner {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -137,7 +137,7 @@
             background-color: #6a1cb0;
         }
         
-        /* Секция категорий */
+        
         .section-title {
             text-align: center;
             margin-bottom: 40px;
@@ -176,7 +176,7 @@
             font-size: 18px;
         }
         
-        /* Секция популярных товаров */
+        
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -240,7 +240,7 @@
             background-color: #e0559e;
         }
         
-        /* Подвал */
+        
         footer {
             background-color: #333;
             color: white;
@@ -285,7 +285,7 @@
             color: #ccc;
         }
         
-        /* Корзина */
+        
         .cart-modal {
             display: none;
             position: fixed;
@@ -393,7 +393,7 @@
             z-index: 999;
         }
         
-        /* Адаптивность */
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -419,7 +419,7 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
+    
     <header>
         <div class="container">
             <div class="header-content">
@@ -445,18 +445,18 @@
         </div>
     </header>
 
-    <!-- Баннер -->
+   
     <section class="banner">
         <div class="container">
             <h1>Найдите свой уникальный аромат</h1>
             <p>Откройте для себя мир изысканных парфюмов от ведущих мировых брендов</p>
-            <a href="#" class="btn">Перейти в каталог</a>
+            <a href="/catalog.html" class="btn">Перейти в каталог</a>
         </div>
     </section>
 
-    <!-- Основной контент -->
+    
     <main class="container">
-        <!-- Категории -->
+        
         <h2 class="section-title">Категории</h2>
         <section class="categories">
             <div class="category">
@@ -477,33 +477,33 @@
             </div>
         </section>
 
-        <!-- Популярные товары -->
+        
         <h2 class="section-title">Популярные товары</h2>
         <section class="products" id="products-container">
-            <!-- Товары будут добавлены через JavaScript -->
+            
         </section>
     </main>
 
-    <!-- Подвал -->
+    
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>О магазине</h3>
                     <ul>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Контакты</a></li>
-                        <li><a href="#">Доставка и оплата</a></li>
-                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="/about.html">О нас</a></li>
+                        <li><a href="about.html">Контакты</a></li>
+                        <li><a href="about.html">Доставка и оплата</a></li>
+                        <li><a href="about.html">Возврат товара</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Категории</h3>
                     <ul>
-                        <li><a href="#">Женская парфюмерия</a></li>
-                        <li><a href="#">Мужская парфюмерия</a></li>
-                        <li><a href="#">Нишевая парфюмерия</a></li>
-                        <li><a href="#">Подарочные наборы</a></li>
+                        <li><a href="catalog.html">Женская парфюмерия</a></li>
+                        <li><a href="catalog.html">Мужская парфюмерия</a></li>
+                        <li><a href="catalog.html">Нишевая парфюмерия</a></li>
+                        <li><a href="catalog.html">Подарочные наборы</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -530,7 +530,7 @@
         </div>
     </footer>
 
-    <!-- Модальное окно корзины -->
+    
     <div class="overlay" id="overlay"></div>
     <div class="cart-modal" id="cart-modal">
         <div class="cart-header">
@@ -538,7 +538,7 @@
             <button class="close-cart" id="close-cart">×</button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Товары в корзине будут добавлены через JavaScript -->
+            
         </div>
         <div class="cart-total">
             <span>Итого:</span>
@@ -548,7 +548,7 @@
     </div>
 
     <script>
-        // Данные о товарах
+        
         const products = [
             {
                 id: 1,
@@ -594,7 +594,7 @@
             }
         ];
 
-        // Корзина
+        
         let cart = [];
         const cartIcon = document.getElementById('cart-icon');
         const cartModal = document.getElementById('cart-modal');
@@ -605,7 +605,7 @@
         const cartCount = document.querySelector('.cart-count');
         const productsContainer = document.getElementById('products-container');
 
-        // Отображение товаров
+       
         function displayProducts() {
             productsContainer.innerHTML = '';
             products.forEach(product => {
@@ -623,7 +623,7 @@
                 productsContainer.appendChild(productElement);
             });
 
-            // Добавление обработчиков событий для кнопок "Добавить в корзину"
+           
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const productId = parseInt(e.target.getAttribute('data-id'));
@@ -632,7 +632,7 @@
             });
         }
 
-        // Добавление товара в корзину
+        
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
@@ -650,19 +650,19 @@
             showNotification(`${product.name} добавлен в корзину`);
         }
 
-        // Удаление товара из корзины
+       
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCart();
         }
 
-        // Обновление корзины
+        
         function updateCart() {
-            // Обновление счетчика товаров
+            
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             
-            // Обновление содержимого корзины
+           
             cartItemsContainer.innerHTML = '';
             let totalPrice = 0;
             
@@ -684,7 +684,7 @@
                     totalPrice += item.price * item.quantity;
                 });
                 
-                // Добавление обработчиков событий для кнопок удаления
+                
                 document.querySelectorAll('.cart-item-remove').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const productId = parseInt(e.target.getAttribute('data-id'));
@@ -693,11 +693,11 @@
                 });
             }
             
-            // Обновление общей стоимости
+            
             cartTotalPrice.textContent = `${totalPrice} руб.`;
         }
 
-        // Показать уведомление
+        
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -719,7 +719,7 @@
             }, 3000);
         }
 
-        // Открытие/закрытие корзины
+        
         cartIcon.addEventListener('click', () => {
             cartModal.style.display = 'block';
             overlay.style.display = 'block';
@@ -738,7 +738,7 @@
             document.body.style.overflow = 'auto';
         });
 
-        // Инициализация при загрузке страницы
+        
         document.addEventListener('DOMContentLoaded', () => {
             displayProducts();
             updateCart();

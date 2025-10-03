@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chanel Coco Mademoiselle - AromaShop</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ff69b4;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #8a2be2;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            margin-left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        
+        .breadcrumbs {
+            padding: 15px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumbs a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs span {
+            margin: 0 5px;
+        }
+        
+        
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: zoom-in;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .thumbnail.active {
+            border-color: #8a2be2;
+        }
+        
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-brand {
+            color: #8a2be2;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-right: 10px;
+        }
+        
+        .rating-value {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .product-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #8a2be2;
+            margin-bottom: 20px;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        
+        .product-details {
+            margin-bottom: 25px;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .detail-label {
+            width: 120px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            flex: 1;
+        }
+        
+        
+        .volume-selection {
+            margin-bottom: 25px;
+        }
+        
+        .volume-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .volume-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .volume-option {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .volume-option.active {
+            border-color: #8a2be2;
+            background-color: rgba(138, 43, 226, 0.05);
+        }
+        
+        
+        .purchase-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #f5f5f5;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            padding: 10px 5px;
+            font-size: 16px;
+        }
+        
+        .add-to-cart {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e0559e;
+        }
+        
+        .buy-now {
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+        
+        .buy-now:hover {
+            background-color: #6a1cb0;
+        }
+        
+        
+        .additional-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option-btn {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .option-btn:hover {
+            color: #8a2be2;
+        }
+        
+        
+        .delivery-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-icon {
+            font-size: 24px;
+            color: #8a2be2;
+        }
+        
+        .info-text {
+            font-size: 14px;
+        }
+        
+        
+        .product-tabs {
+            margin-bottom: 60px;
+        }
+        
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #8a2be2;
+            border-bottom-color: #8a2be2;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        
+        .review {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .review-author {
+            font-weight: 600;
+        }
+        
+        .review-date {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        
+        .related-products {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .product-card-info {
+            padding: 15px;
+        }
+        
+        .product-card-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-card-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #8a2be2;
+            margin-bottom: 15px;
+        }
+        
+        .product-card-btn {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .product-card-btn:hover {
+            background-color: #e0559e;
+        }
+        
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+       
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: #8a2be2;
+            font-weight: 600;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #6a1cb0;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+       
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .product-detail {
+                flex-direction: column;
+            }
+            
+            .purchase-options {
+                flex-direction: column;
+            }
+            
+            .additional-options {
+                justify-content: center;
+            }
+            
+            .tabs-header {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+            
+            .cart-modal {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .volume-options {
+                justify-content: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .badge-new {
+            background-color: #ff69b4;
+            color: white;
+        }
+        
+        .badge-popular {
+            background-color: #8a2be2;
+            color: white;
+        }
+        
+        .badge-sale {
+            background-color: #ff6b6b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Aroma<span>Shop</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="#">Бренды</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <div class="icon search">🔍</div>
+                    <div class="icon user"><a style="text-decoration: none" href="auth.html">👤</a></div>
+                    <div class="icon cart" id="cart-icon">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> <span>></span> 
+            <a href="catalog.html">Каталог</a> <span>></span> 
+            <a href="catalog.html?category=women">Женская парфюмерия</a> <span>></span> 
+            <a href="catalog.html?brand=chanel">Chanel</a> <span>></span> 
+            <span>Coco Mademoiselle</span>
+        </div>
+    </div>
+
+    
+    <main class="container">
+        
+        <div class="product-detail fade-in">
+            
+            <div class="product-gallery">
+                <img src="https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chanel Coco Mademoiselle" class="main-image" id="main-image">
+                <div class="image-thumbnails">
+                    <img src="https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chanel Coco Mademoiselle" class="thumbnail active" data-image="https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                    <img src="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chanel Coco Mademoiselle - боковой вид" class="thumbnail" data-image="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                    <img src="https://images.unsplash.com/photo-1590732870500-8b3c127d60bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chanel Coco Mademoiselle - упаковка" class="thumbnail" data-image="https://images.unsplash.com/photo-1590732870500-8b3c127d60bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                    <img src="https://images.unsplash.com/photo-1590732870500-74c1276f7b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chanel Coco Mademoiselle - детали" class="thumbnail" data-image="https://images.unsplash.com/photo-1590732870500-74c1276f7b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                </div>
+            </div>
+            
+            
+            <div class="product-info">
+                <p class="product-brand">Chanel</p>
+                <h1 class="product-title">Coco Mademoiselle</h1>
+                
+                <div class="product-rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.9 (128 отзывов)</span>
+                </div>
+                
+                <div class="badges">
+                    <span class="badge badge-popular">Популярный</span>
+                    <span class="badge badge-new">Новинка</span>
+                </div>
+                
+                <div class="product-price">7 500 руб.</div>
+                
+                <p class="product-description">
+                    Coco Mademoiselle — это современная интерпретация смелой и независимой женщины. 
+                    Этот чувственный и загадочный аромат сочетает в себе свежесть цитрусовых нот 
+                    с теплотой пачули и ветивера.
+                </p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Бренд:</span>
+                        <span class="detail-value">Chanel</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Тип аромата:</span>
+                        <span class="detail-value">Восточный, цветочный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Концентрация:</span>
+                        <span class="detail-value">Eau de Parfum</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Для кого:</span>
+                        <span class="detail-value">Для женщин</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Страна:</span>
+                        <span class="detail-value">Франция</span>
+                    </div>
+                </div>
+                
+                <div class="volume-selection">
+                    <div class="volume-title">Объем:</div>
+                    <div class="volume-options">
+                        <div class="volume-option active" data-volume="50" data-price="5500">50 мл</div>
+                        <div class="volume-option" data-volume="100" data-price="7500">100 мл</div>
+                        <div class="volume-option" data-volume="150" data-price="9500">150 мл</div>
+                    </div>
+                </div>
+                
+                <div class="purchase-options">
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" id="decrease-qty">-</button>
+                        <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+                        <button class="quantity-btn" id="increase-qty">+</button>
+                    </div>
+                    <button class="add-to-cart" id="add-to-cart">Добавить в корзину</button>
+                    <button class="buy-now" id="buy-now">Купить сейчас</button>
+                </div>
+                
+                <div class="additional-options">
+                    <button class="option-btn" id="add-to-wishlist">
+                        <span>❤️</span> В избранное
+                    </button>
+                    <button class="option-btn" id="compare-product">
+                        <span>⚖️</span> Сравнить
+                    </button>
+                    <button class="option-btn" id="share-product">
+                        <span>↗️</span> Поделиться
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="delivery-info">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">🚚</div>
+                    <div class="info-text">
+                        <strong>Бесплатная доставка</strong><br>
+                        При заказе от 5000 руб.
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">↩️</div>
+                    <div class="info-text">
+                        <strong>Возврат в течение 14 дней</strong><br>
+                        Если товар не подошел
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🛡️</div>
+                    <div class="info-text">
+                        <strong>Гарантия подлинности</strong><br>
+                        Все товары сертифицированы
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">💎</div>
+                    <div class="info-text">
+                        <strong>Оригинальная продукция</strong><br>
+                        Прямые поставки от брендов
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="product-tabs">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="description">Описание</button>
+                <button class="tab-btn" data-tab="characteristics">Характеристики</button>
+                <button class="tab-btn" data-tab="reviews">Отзывы (128)</button>
+                <button class="tab-btn" data-tab="usage">Применение</button>
+            </div>
+            
+            <div class="tab-content active" id="description-tab">
+                <h3>О аромате Coco Mademoiselle</h3>
+                <p>Coco Mademoiselle от Chanel — это аромат для современной, уверенной в себе женщины. Он был создан в 2001 году парфюмером Жаком Полжем и с тех пор завоевал сердца миллионов женщин по всему миру.</p>
+                
+                <h4>Пирамида аромата:</h4>
+                <ul>
+                    <li><strong>Верхние ноты:</strong> Апельсин, бергамот, мандарин</li>
+                    <li><strong>Ноты сердца:</strong> Личи, жасмин, роза</li>
+                    <li><strong>Базовые ноты:</strong> Пачули, ветивер, ваниль, белый мускус</li>
+                </ul>
+                
+                <p>Аромат начинается с яркой вспышки цитрусовых, которые постепенно сменяются нежными цветочными аккордами. Финалом становится теплый, чувственный шлейф с нотами пачули и ванили.</p>
+            </div>
+            
+            <div class="tab-content" id="characteristics-tab">
+                <h3>Технические характеристики</h3>
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Туалетная вода</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Концентрация:</span>
+                        <span class="detail-value">Eau de Parfum</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">50 мл / 100 мл / 150 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Пол:</span>
+                        <span class="detail-value">Женский</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Сезонность:</span>
+                        <span class="detail-value">Круглогодичный</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Стойкость:</span>
+                        <span class="detail-value">6-8 часов</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Страна производства:</span>
+                        <span class="detail-value">Франция</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Год создания:</span>
+                        <span class="detail-value">2001</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="reviews-tab">
+                <h3>Отзывы покупателей</h3>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="review-author">Анна Петрова</span>
+                        <span class="review-date">15.03.2023</span>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Это мой любимый аромат! Ношу его уже несколько лет и не перестаю восхищаться. Стойкий, нежный и очень женственный. Получаю комплименты каждый раз, когда его использую.</p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="review-author">Мария Иванова</span>
+                        <span class="review-date">02.02.2023</span>
+                    </div>
+                    <div class="review-rating">★★★★☆</div>
+                    <p>Отличный аромат, очень нравится. Единственное, что в жаркую погоду может быть немного навязчивым. В остальном - идеальный парфюм для вечера и особых occasions.</p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="review-author">Елена Смирнова</span>
+                        <span class="review-date">20.01.2023</span>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Покупала в подарок сестре, она в восторге! Аромат действительно стоит своих денег. Упаковка красивая, доставка быстрая. Обязательно буду заказывать еще.</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="usage-tab">
+                <h3>Рекомендации по применению</h3>
+                <p>Чтобы аромат Coco Mademoiselle раскрылся полностью и сохранялся максимально долго, следуйте этим советам:</p>
+                
+                <h4>Как наносить:</h4>
+                <ul>
+                    <li>Наносите парфюм на чистую, увлажненную кожу</li>
+                    <li>Лучшие точки для нанесения: запястья, шея, зона за ушами</li>
+                    <li>Не трите запястья друг о друга после нанесения</li>
+                    <li>Для более интенсивного аромата можно нанести парфюм на волосы или одежду</li>
+                </ul>
+                
+                <h4>Когда использовать:</h4>
+                <ul>
+                    <li>Идеально подходит для вечерних мероприятий</li>
+                    <li>Отлично сочетается с деловым стилем одежды</li>
+                    <li>Может использоваться как дневной аромат в прохладную погоду</li>
+                </ul>
+                
+                <h4>Условия хранения:</h4>
+                <ul>
+                    <li>Храните вдали от прямых солнечных лучей</li>
+                    <li>Избегайте перепадов температур</li>
+                    <li>Плотно закрывайте флакон после использования</li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class="related-products">
+            <h2 class="section-title">Похожие товары</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Chanel Chance" class="product-card-img">
+                    <div class="product-card-info">
+                        <h3 class="product-card-title">Chanel Chance Eau Tendre</h3>
+                        <p class="product-card-price">6 800 руб.</p>
+                        <button class="product-card-btn">В корзину</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dior J'adore" class="product-card-img">
+                    <div class="product-card-info">
+                        <h3 class="product-card-title">Dior J'adore</h3>
+                        <p class="product-card-price">7 200 руб.</p>
+                        <button class="product-card-btn">В корзину</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="YSL Black Opium" class="product-card-img">
+                    <div class="product-card-info">
+                        <h3 class="product-card-title">YSL Black Opium</h3>
+                        <p class="product-card-price">6 900 руб.</p>
+                        <button class="product-card-btn">В корзину</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Gucci Bloom" class="product-card-img">
+                    <div class="product-card-info">
+                        <h3 class="product-card-title">Gucci Bloom</h3>
+                        <p class="product-card-price">6 500 руб.</p>
+                        <button class="product-card-btn">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О магазине</h3>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="catalog.html?category=women">Женская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=men">Мужская парфюмерия</a></li>
+                        <li><a href="catalog.html?category=niche">Нишевая парфюмерия</a></li>
+                        <li><a href="catalog.html?category=gifts">Подарочные наборы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Как выбрать аромат</a></li>
+                        <li><a href="#">Правила хранения</a></li>
+                        <li><a href="#">Публичная оферта</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>📞 +7 (999) 123-45-67</li>
+                        <li>✉️ info@aromashop.ru</li>
+                        <li>📍 г. Москва, ул. Парфюмерная, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AromaShop. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Корзина</h2>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            
+        </div>
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total-price">0 руб.</span>
+        </div>
+        <button class="checkout-btn">Оформить заказ</button>
+    </div>
+
+    
+    <div class="image-modal" id="image-modal">
+        <button class="close-modal" id="close-modal">×</button>
+        <img src="" alt="" class="modal-image" id="modal-image">
+    </div>
+
+    <script>
+        
+        const product = {
+            id: 1,
+            name: "Coco Mademoiselle",
+            brand: "Chanel",
+            price: 7500,
+            images: [
+                "https://images.unsplash.com/photo-1544468266-6a8948001c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1590732870500-8b3c127d60bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1590732870500-74c1276f7b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            ],
+            volumes: [
+                { size: "50 мл", price: 5500 },
+                { size: "100 мл", price: 7500 },
+                { size: "150 мл", price: 9500 }
+            ]
+        };
+
+       
+        let cart = [];
+        let selectedVolume = "100 мл";
+        let selectedPrice = 7500;
+        let quantity = 1;
+
+       
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        const mainImage = document.getElementById('main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const volumeOptions = document.querySelectorAll('.volume-option');
+        const decreaseQty = document.getElementById('decrease-qty');
+        const increaseQty = document.getElementById('increase-qty');
+        const quantityInput = document.getElementById('quantity');
+        const addToCartBtn = document.getElementById('add-to-cart');
+        const buyNowBtn = document.getElementById('buy-now');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const imageModal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeModal = document.getElementById('close-modal');
+        const productPrice = document.querySelector('.product-price');
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCart();
+            setupEventListeners();
+        });
+
+       
+        function setupEventListeners() {
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    const imageSrc = thumbnail.getAttribute('data-image');
+                    mainImage.src = imageSrc;
+                    
+                    
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                });
+            });
+            
+            
+            mainImage.addEventListener('click', () => {
+                modalImage.src = mainImage.src;
+                imageModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', () => {
+                imageModal.style.display = 'none';
+            });
+            
+           
+            volumeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const volume = option.getAttribute('data-volume');
+                    const price = option.getAttribute('data-price');
+                    
+                    
+                    volumeOptions.forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                    
+                  
+                    selectedVolume = `${volume} мл`;
+                    selectedPrice = parseInt(price);
+                    productPrice.textContent = `${selectedPrice} руб.`;
+                });
+            });
+            
+           
+            decreaseQty.addEventListener('click', () => {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityInput.value = quantity;
+                }
+            });
+            
+            increaseQty.addEventListener('click', () => {
+                quantity++;
+                quantityInput.value = quantity;
+            });
+            
+            
+            addToCartBtn.addEventListener('click', () => {
+                addToCart();
+            });
+            
+           
+            buyNowBtn.addEventListener('click', () => {
+                addToCart();
+                openCart();
+            });
+            
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                  
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-tab`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            
+            cartIcon.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartModal);
+            overlay.addEventListener('click', closeCartModal);
+            
+           
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeCartModal();
+                }
+            });
+            
+            
+            document.getElementById('add-to-wishlist').addEventListener('click', () => {
+                showNotification('Товар добавлен в избранное');
+            });
+            
+            document.getElementById('compare-product').addEventListener('click', () => {
+                showNotification('Товар добавлен к сравнению');
+            });
+            
+            document.getElementById('share-product').addEventListener('click', () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Chanel Coco Mademoiselle',
+                        text: 'Посмотрите этот прекрасный парфюм в AromaShop',
+                        url: window.location.href
+                    });
+                } else {
+                    showNotification('Ссылка скопирована в буфер обмена');
+                }
+            });
+        }
+
+       
+        function addToCart() {
+            const cartItem = {
+                id: product.id,
+                name: product.name,
+                brand: product.brand,
+                volume: selectedVolume,
+                price: selectedPrice,
+                quantity: quantity,
+                image: product.images[0]
+            };
+            
+            const existingItem = cart.find(item => 
+                item.id === cartItem.id && item.volume === cartItem.volume
+            );
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push(cartItem);
+            }
+            
+            updateCart();
+            showNotification(`${product.name} добавлен в корзину`);
+        }
+
+        
+        function removeFromCart(productId, volume) {
+            cart = cart.filter(item => !(item.id === productId && item.volume === volume));
+            updateCart();
+        }
+
+        
+        function updateCart() {
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+           
+            cartItemsContainer.innerHTML = '';
+            let totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Корзина пуста</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <p class="cart-item-price">${item.price} руб. x ${item.quantity}</p>
+                            <p>${item.volume}</p>
+                            <button class="cart-item-remove" data-id="${item.id}" data-volume="${item.volume}">Удалить</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price * item.quantity;
+                });
+                
+                
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        const volume = e.target.getAttribute('data-volume');
+                        removeFromCart(productId, volume);
+                    });
+                });
+            }
+            
+            
+            cartTotalPrice.textContent = `${totalPrice} руб.`;
+        }
+
+       
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #8a2be2;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 1001;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+       
+        function openCart() {
+            cartModal.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+      
+        function closeCartModal() {
+            cartModal.style.display = 'none';
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>

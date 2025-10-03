@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AromaShop - Каталог парфюмерии</title>
     <style>
-        /* Общие стили */
+        
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
             padding: 0 15px;
         }
         
-        /* Шапка сайта */
+        
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -100,7 +100,7 @@
             align-items: center;
         }
         
-        /* Хлебные крошки */
+        
         .breadcrumbs {
             padding: 15px 0;
             font-size: 14px;
@@ -116,7 +116,7 @@
             margin: 0 5px;
         }
         
-        /* Заголовок страницы */
+        
         .page-title {
             text-align: center;
             margin: 20px 0 40px;
@@ -124,7 +124,7 @@
             color: #333;
         }
         
-        /* Панель управления каталогом */
+        
         .catalog-controls {
             display: flex;
             justify-content: space-between;
@@ -726,7 +726,7 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
+    
     <header>
         <div class="container">
             <div class="header-content">
@@ -735,14 +735,14 @@
                     <ul>
                         <li><a href="index.html">Главная</a></li>
                         <li><a href="catalog.html" class="active">Каталог</a></li>
-                        <li><a href="brands.html">Бренды</a></li>
+                        <li><a href="#">Бренды</a></li>
                         <li><a href="about.html">О нас</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Контакты</a></li>
                     </ul>
                 </nav>
                 <div class="header-icons">
                     <div class="icon search">🔍</div>
-                    <div class="icon user">👤</div>
+                    <div class="icon user"><a style="text-decoration: none" href="auth.html">👤</a></div>
                     <div class="icon cart" id="cart-icon">
                         🛒
                         <span class="cart-count">0</span>
@@ -752,21 +752,21 @@
         </div>
     </header>
 
-    <!-- Хлебные крошки -->
+  
     <div class="container">
         <div class="breadcrumbs">
             <a href="index.html">Главная</a> <span>></span> <a href="catalog.html">Каталог</a> <span>></span> <span>Все товары</span>
         </div>
     </div>
 
-    <!-- Заголовок страницы -->
+ 
     <div class="container">
         <h1 class="page-title">Каталог парфюмерии</h1>
     </div>
 
-    <!-- Основной контент -->
+   
     <main class="container">
-        <!-- Панель управления каталогом -->
+      
         <div class="catalog-controls">
             <button class="filter-toggle" id="filter-toggle">Фильтры</button>
             <div class="results-count" id="results-count">Найдено товаров: 12</div>
@@ -787,7 +787,7 @@
         </div>
         
         <div class="catalog-container">
-            <!-- Боковая панель фильтров -->
+           
             <aside class="filters-sidebar" id="filters-sidebar">
                 <div class="filter-section">
                     <h3 class="filter-title">Категории</h3>
@@ -837,19 +837,19 @@
                 </div>
             </aside>
             
-            <!-- Сетка товаров -->
+            
             <section class="products-grid" id="products-container">
-                <!-- Товары будут добавлены через JavaScript -->
+               
             </section>
         </div>
         
-        <!-- Пагинация -->
+        
         <div class="pagination" id="pagination">
-            <!-- Кнопки пагинации будут добавлены через JavaScript -->
+           
         </div>
     </main>
 
-    <!-- Подвал -->
+    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -895,7 +895,7 @@
         </div>
     </footer>
 
-    <!-- Модальное окно корзины -->
+   
     <div class="overlay" id="overlay"></div>
     <div class="cart-modal" id="cart-modal">
         <div class="cart-header">
@@ -903,7 +903,7 @@
             <button class="close-cart" id="close-cart">×</button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Товары в корзине будут добавлены через JavaScript -->
+            
         </div>
         <div class="cart-total">
             <span>Итого:</span>
@@ -913,7 +913,7 @@
     </div>
 
     <script>
-        // Данные о товарах
+        
         const products = [
             {
                 id: 1,
@@ -955,7 +955,7 @@
                 category: "women",
                 price: 6500,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://www.myperfumeshop.com.au/cdn/shop/products/gucci-gucci-bloom-edp-724855.png?v=1609925260&width=2048",
                 popular: false,
                 isNew: false
             },
@@ -966,7 +966,7 @@
                 category: "men",
                 price: 8900,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://sdcdn.io/tf/tf_sku_T14G01_3000x3000_0.png",
                 popular: true,
                 isNew: false
             },
@@ -977,7 +977,7 @@
                 category: "men",
                 price: 7800,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://www.myperfumeshop.eu/cdn/shop/products/hermes-terre-dhermes-pure-parfum-perfume-cologne-681691.png?v=1702281892&width=2048",
                 popular: false,
                 isNew: true
             },
@@ -988,7 +988,7 @@
                 category: "women",
                 price: 7200,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dwc0b69c40/Y0997096/Y0997096_background_ZHC.png?sw=3000&sh=1600",
                 popular: true,
                 isNew: false
             },
@@ -999,7 +999,7 @@
                 category: "men",
                 price: 8200,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://www.chanel.com/images//t_one/t_fragrance//q_auto:good,f_auto,fl_lossy,dpr_1.1/w_1920/bleu-de-chanel-eau-de-parfum-spray-1-7fl-oz--packshot-default-107350-9564891086878.jpg",
                 popular: true,
                 isNew: false
             },
@@ -1010,7 +1010,7 @@
                 category: "women",
                 price: 7400,
                 volume: 90,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://spaces.parfumgallery.uz/images/products/2025-02-09T15-19-44-526Z_3614272648418.png",
                 popular: false,
                 isNew: true
             },
@@ -1021,7 +1021,7 @@
                 category: "unisex",
                 price: 6900,
                 volume: 90,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://media.ulta.com/i/ulta/2615703?w=500&h=500",
                 popular: true,
                 isNew: false
             },
@@ -1032,7 +1032,7 @@
                 category: "men",
                 price: 6500,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://wafadutyfree.com/cdn/shop/files/giorgio-armani-eau-de-parfum-125ml-acqua-di-gio-pour-homme-eau-de-parfum-35509609398365.png?v=1750195558",
                 popular: false,
                 isNew: false
             },
@@ -1043,20 +1043,20 @@
                 category: "women",
                 price: 7100,
                 volume: 100,
-                image: "https://images.unsplash.com/photo-1590732870487-7ec4dcb978f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                image: "https://www.beirutdutyfree.com/media/products/large/6319_1646985528_fragrance26.png",
                 popular: true,
                 isNew: false
             }
         ];
 
-        // Глобальные переменные
+       
         let cart = [];
         let filteredProducts = [...products];
         let currentPage = 1;
         const productsPerPage = 8;
         let isListView = false;
 
-        // DOM элементы
+        
         const cartIcon = document.getElementById('cart-icon');
         const cartModal = document.getElementById('cart-modal');
         const closeCart = document.getElementById('close-cart');
@@ -1075,23 +1075,22 @@
         const viewButtons = document.querySelectorAll('.view-btn');
         const filterToggleButtons = document.querySelectorAll('.filter-toggle-btn');
 
-        // Инициализация при загрузке страницы
+        
         document.addEventListener('DOMContentLoaded', () => {
             displayProducts();
             updateCart();
             setupEventListeners();
         });
 
-        // Настройка обработчиков событий
         function setupEventListeners() {
-            // Фильтрация
+            
             applyFiltersBtn.addEventListener('click', applyFilters);
             resetFiltersBtn.addEventListener('click', resetFilters);
             
-            // Сортировка
+            
             sortBySelect.addEventListener('change', applyFilters);
             
-            // Переключение вида
+           
             viewButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const view = btn.getAttribute('data-view');
@@ -1099,12 +1098,12 @@
                 });
             });
             
-            // Переключение фильтров на мобильных устройствах
+            
             filterToggle.addEventListener('click', () => {
                 filtersSidebar.classList.toggle('hidden');
             });
             
-            // Сворачивание/разворачивание секций фильтров
+            
             filterToggleButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const targetId = btn.getAttribute('data-target');
@@ -1116,12 +1115,12 @@
                 });
             });
             
-            // Корзина
+           
             cartIcon.addEventListener('click', openCart);
             closeCart.addEventListener('click', closeCartModal);
             overlay.addEventListener('click', closeCartModal);
             
-            // Закрытие корзины при нажатии Escape
+            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeCartModal();
@@ -1129,11 +1128,11 @@
             });
         }
 
-        // Отображение товаров
+        
         function displayProducts(productsToShow = filteredProducts, page = 1) {
             productsContainer.innerHTML = '';
             
-            // Показываем индикатор загрузки
+            
             if (productsToShow.length === 0) {
                 productsContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
                 setTimeout(() => {
@@ -1144,12 +1143,12 @@
                 return;
             }
             
-            // Вычисляем индексы для текущей страницы
+            
             const startIndex = (page - 1) * productsPerPage;
             const endIndex = startIndex + productsPerPage;
             const paginatedProducts = productsToShow.slice(startIndex, endIndex);
             
-            // Имитация загрузки для лучшего UX
+            
             productsContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
             
             setTimeout(() => {
@@ -1160,15 +1159,15 @@
                     productsContainer.appendChild(productElement);
                 });
                 
-                // Обновление счетчика результатов
+                
                 updateResultsCount(productsToShow.length);
                 
-                // Обновление пагинации
+                
                 updatePagination(productsToShow.length, page);
             }, 300);
         }
 
-        // Создание элемента товара
+        
         function createProductElement(product) {
             const productElement = document.createElement('div');
             productElement.classList.add('product-card');
@@ -1178,7 +1177,7 @@
             
             let productHTML = `
                 <img src="${product.image}" alt="${product.name}" class="product-image">
-                <div class="product-info">
+                <a href<div class="product-info">
                     <p class="product-brand">${product.brand}</p>
                     <h3 class="product-name">${product.name}</h3>
                     <p class="product-volume">${product.volume} мл</p>
@@ -1204,7 +1203,7 @@
             productHTML += `</div>`;
             productElement.innerHTML = productHTML;
             
-            // Добавление обработчика для кнопки "Добавить в корзину"
+            
             const addToCartBtn = productElement.querySelector('.add-to-cart');
             addToCartBtn.addEventListener('click', (e) => {
                 const productId = parseInt(e.target.getAttribute('data-id'));
@@ -1214,14 +1213,14 @@
             return productElement;
         }
 
-        // Обновление пагинации
+        
         function updatePagination(totalProducts, currentPage) {
             const totalPages = Math.ceil(totalProducts / productsPerPage);
             paginationContainer.innerHTML = '';
             
             if (totalPages <= 1) return;
             
-            // Кнопка "Назад"
+            
             const prevButton = document.createElement('button');
             prevButton.textContent = '←';
             prevButton.disabled = currentPage === 1;
@@ -1232,7 +1231,7 @@
             });
             paginationContainer.appendChild(prevButton);
             
-            // Номера страниц
+            
             const startPage = Math.max(1, currentPage - 2);
             const endPage = Math.min(totalPages, currentPage + 2);
             
@@ -1248,7 +1247,7 @@
                 paginationContainer.appendChild(pageButton);
             }
             
-            // Кнопка "Вперед"
+            
             const nextButton = document.createElement('button');
             nextButton.textContent = '→';
             nextButton.disabled = currentPage === totalPages;
@@ -1260,21 +1259,21 @@
             paginationContainer.appendChild(nextButton);
         }
 
-        // Обновление счетчика результатов
+        
         function updateResultsCount(count) {
             resultsCount.textContent = `Найдено товаров: ${count}`;
         }
 
-        // Применение фильтров
+        
         function applyFilters() {
-            // Получаем выбранные категории
+        
             const selectedCategories = [];
             if (document.getElementById('category-women').checked) selectedCategories.push('women');
             if (document.getElementById('category-men').checked) selectedCategories.push('men');
             if (document.getElementById('category-unisex').checked) selectedCategories.push('unisex');
             if (document.getElementById('category-niche').checked) selectedCategories.push('niche');
             
-            // Получаем выбранные бренды
+            
             const selectedBrands = [];
             if (document.getElementById('brand-chanel').checked) selectedBrands.push('Chanel');
             if (document.getElementById('brand-dior').checked) selectedBrands.push('Dior');
@@ -1285,34 +1284,34 @@
             if (document.getElementById('brand-armani').checked) selectedBrands.push('Giorgio Armani');
             if (document.getElementById('brand-lancome').checked) selectedBrands.push('Lancôme');
             
-            // Получаем диапазон цен
+            
             const minPrice = document.getElementById('min-price').value ? parseInt(document.getElementById('min-price').value) : 0;
             const maxPrice = document.getElementById('max-price').value ? parseInt(document.getElementById('max-price').value) : 20000;
             
-            // Получаем выбранные объемы
+            
             const selectedVolumes = [];
             if (document.getElementById('volume-30').checked) selectedVolumes.push(30);
             if (document.getElementById('volume-50').checked) selectedVolumes.push(50);
             if (document.getElementById('volume-100').checked) selectedVolumes.push(100);
             
-            // Применяем фильтры
+            
             filteredProducts = products.filter(product => {
-                // Фильтр по категории
+                
                 if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
                     return false;
                 }
                 
-                // Фильтр по бренду
+                
                 if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
                     return false;
                 }
                 
-                // Фильтр по цене
+                
                 if (product.price < minPrice || product.price > maxPrice) {
                     return false;
                 }
                 
-                // Фильтр по объему
+                
                 if (selectedVolumes.length > 0 && !selectedVolumes.includes(product.volume)) {
                     return false;
                 }
@@ -1320,16 +1319,16 @@
                 return true;
             });
             
-            // Сортировка
+            
             const sortBy = sortBySelect.value;
             sortProducts(sortBy);
             
-            // Сбрасываем на первую страницу и отображаем товары
+            
             currentPage = 1;
             displayProducts(filteredProducts, currentPage);
         }
 
-        // Сортировка товаров
+        
         function sortProducts(sortBy) {
             switch (sortBy) {
                 case 'price-low':
@@ -1351,46 +1350,46 @@
             }
         }
 
-        // Сброс фильтров
+        
         function resetFilters() {
-            // Сбрасываем все чекбоксы
+            
             document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
                 checkbox.checked = false;
             });
             
-            // Устанавливаем чекбоксы категорий по умолчанию
+            
             document.getElementById('category-women').checked = true;
             document.getElementById('category-men').checked = true;
             document.getElementById('category-unisex').checked = true;
             
-            // Сбрасываем поля цены
+            
             document.getElementById('min-price').value = '';
             document.getElementById('max-price').value = '';
             
-            // Сбрасываем сортировку
+            
             sortBySelect.value = 'popular';
             
-            // Применяем сброшенные фильтры
+            
             applyFilters();
         }
 
-        // Переключение вида (сетка/список)
+        
         function toggleView(view) {
             isListView = view === 'list';
             
-            // Обновляем активную кнопку
+            
             viewButtons.forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-view') === view);
             });
             
-            // Обновляем класс контейнера
+            
             productsContainer.classList.toggle('list-view', isListView);
             
-            // Перерисовываем товары
+            
             displayProducts(filteredProducts, currentPage);
         }
 
-        // Добавление товара в корзину
+        
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
@@ -1408,19 +1407,19 @@
             showNotification(`${product.name} добавлен в корзину`);
         }
 
-        // Удаление товара из корзины
+        
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCart();
         }
 
-        // Обновление корзины
+        
         function updateCart() {
-            // Обновление счетчика товаров
+            
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             
-            // Обновление содержимого корзины
+            
             cartItemsContainer.innerHTML = '';
             let totalPrice = 0;
             
@@ -1442,7 +1441,7 @@
                     totalPrice += item.price * item.quantity;
                 });
                 
-                // Добавление обработчиков событий для кнопок удаления
+                
                 document.querySelectorAll('.cart-item-remove').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const productId = parseInt(e.target.getAttribute('data-id'));
@@ -1451,11 +1450,11 @@
                 });
             }
             
-            // Обновление общей стоимости
+            
             cartTotalPrice.textContent = `${totalPrice} руб.`;
         }
 
-        // Показать уведомление
+        
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -1477,14 +1476,14 @@
             }, 3000);
         }
 
-        // Открытие корзины
+        
         function openCart() {
             cartModal.style.display = 'block';
             overlay.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        // Закрытие корзины
+        
         function closeCartModal() {
             cartModal.style.display = 'none';
             overlay.style.display = 'none';

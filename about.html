@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AromaShop - О нас</title>
     <style>
-        /* Общие стили */
+        
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
             padding: 0 15px;
         }
         
-        /* Шапка сайта */
+        
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -100,7 +100,7 @@
             align-items: center;
         }
         
-        /* Хлебные крошки */
+        
         .breadcrumbs {
             padding: 15px 0;
             font-size: 14px;
@@ -116,7 +116,7 @@
             margin: 0 5px;
         }
         
-        /* Заголовок страницы */
+        
         .page-title {
             text-align: center;
             margin: 20px 0 40px;
@@ -124,12 +124,12 @@
             color: #333;
         }
         
-        /* Основной контент */
+        
         .about-content {
             margin-bottom: 60px;
         }
         
-        /* Блок с миссией */
+        
         .mission-section {
             background: linear-gradient(135deg, #8a2be2, #ff69b4);
             color: white;
@@ -150,7 +150,7 @@
             margin: 0 auto;
         }
         
-        /* Преимущества */
+        
         .features-section {
             margin-bottom: 60px;
         }
@@ -192,7 +192,7 @@
             margin-bottom: 15px;
         }
         
-        /* История компании */
+        
         .history-section {
             margin-bottom: 60px;
         }
@@ -253,7 +253,7 @@
             z-index: 1;
         }
         
-        /* Команда */
+        
         .team-section {
             margin-bottom: 60px;
         }
@@ -298,7 +298,7 @@
             font-weight: 600;
         }
         
-        /* Отзывы */
+        
         .testimonials-section {
             margin-bottom: 60px;
         }
@@ -355,7 +355,7 @@
             background-color: #8a2be2;
         }
         
-        /* Контактная информация */
+        
         .contact-section {
             margin-bottom: 60px;
         }
@@ -413,7 +413,7 @@
             color: #666;
         }
         
-        /* Подвал */
+        
         footer {
             background-color: #333;
             color: white;
@@ -458,7 +458,7 @@
             color: #ccc;
         }
         
-        /* Корзина */
+       
         .cart-modal {
             display: none;
             position: fixed;
@@ -566,7 +566,7 @@
             z-index: 999;
         }
         
-        /* Адаптивность */
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -605,7 +605,7 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
+    
     <header>
         <div class="container">
             <div class="header-content">
@@ -614,14 +614,14 @@
                     <ul>
                         <li><a href="index.html">Главная</a></li>
                         <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="brands.html">Бренды</a></li>
+                        <li><a href="#">Бренды</a></li>
                         <li><a href="about.html" class="active">О нас</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Контакты</a></li>
                     </ul>
                 </nav>
                 <div class="header-icons">
                     <div class="icon search">🔍</div>
-                    <div class="icon user">👤</div>
+                    <div class="icon user"><a style="text-decoration: none" href="auth.html">👤</a></div>
                     <div class="icon cart" id="cart-icon">
                         🛒
                         <span class="cart-count">0</span>
@@ -631,21 +631,21 @@
         </div>
     </header>
 
-    <!-- Хлебные крошки -->
+    
     <div class="container">
         <div class="breadcrumbs">
             <a href="index.html">Главная</a> <span>></span> <span>О нас</span>
         </div>
     </div>
 
-    <!-- Заголовок страницы -->
+    
     <div class="container">
         <h1 class="page-title">О компании AromaShop</h1>
     </div>
 
-    <!-- Основной контент -->
+    
     <main class="container">
-        <!-- Блок с миссией -->
+        
         <section class="mission-section">
             <div class="container">
                 <h2>Наша миссия</h2>
@@ -653,7 +653,7 @@
             </div>
         </section>
 
-        <!-- Преимущества -->
+        
         <section class="features-section">
             <h2 class="section-title">Почему выбирают нас</h2>
             <div class="features-grid">
@@ -680,7 +680,7 @@
             </div>
         </section>
 
-        <!-- История компании -->
+        
         <section class="history-section">
             <h2 class="section-title">Наша история</h2>
             <div class="history-timeline">
@@ -722,7 +722,7 @@
             </div>
         </section>
 
-        <!-- Команда -->
+        
         <section class="team-section">
             <h2 class="section-title">Наша команда</h2>
             <div class="team-grid">
@@ -761,7 +761,7 @@
             </div>
         </section>
 
-        <!-- Отзывы -->
+        
         <section class="testimonials-section">
             <h2 class="section-title">Отзывы наших клиентов</h2>
             <div class="testimonials-slider">
@@ -787,7 +787,7 @@
             </div>
         </section>
 
-        <!-- Контактная информация -->
+        
         <section class="contact-section">
             <h2 class="section-title">Наши контакты</h2>
             <div class="contact-grid">
@@ -810,7 +810,7 @@
         </section>
     </main>
 
-    <!-- Подвал -->
+    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -856,7 +856,7 @@
         </div>
     </footer>
 
-    <!-- Модальное окно корзины -->
+    
     <div class="overlay" id="overlay"></div>
     <div class="cart-modal" id="cart-modal">
         <div class="cart-header">
@@ -864,7 +864,7 @@
             <button class="close-cart" id="close-cart">×</button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Товары в корзине будут добавлены через JavaScript -->
+            
         </div>
         <div class="cart-total">
             <span>Итого:</span>
@@ -874,7 +874,7 @@
     </div>
 
     <script>
-        // Данные о товарах (для корзины)
+        
         const products = [
             {
                 id: 1,
@@ -892,7 +892,7 @@
             }
         ];
 
-        // Корзина
+       
         let cart = [];
         const cartIcon = document.getElementById('cart-icon');
         const cartModal = document.getElementById('cart-modal');
@@ -902,22 +902,22 @@
         const cartTotalPrice = document.getElementById('cart-total-price');
         const cartCount = document.querySelector('.cart-count');
 
-        // Слайдер отзывов
+        
         const testimonialsTrack = document.getElementById('testimonials-track');
         const sliderDots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
 
-        // Функция для переключения слайдов
+        
         function goToSlide(index) {
             currentSlide = index;
             testimonialsTrack.style.transform = `translateX(-${index * 100}%)`;
             
-            // Обновление активной точки
+            
             sliderDots.forEach(dot => dot.classList.remove('active'));
             sliderDots[index].classList.add('active');
         }
 
-        // Добавление обработчиков событий для точек слайдера
+        
         sliderDots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const index = parseInt(dot.getAttribute('data-index'));
@@ -925,13 +925,13 @@
             });
         });
 
-        // Автоматическое переключение слайдов
+        
         setInterval(() => {
             currentSlide = (currentSlide + 1) % sliderDots.length;
             goToSlide(currentSlide);
         }, 5000);
 
-        // Добавление товара в корзину (для демонстрации)
+        
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
@@ -949,19 +949,19 @@
             showNotification(`${product.name} добавлен в корзину`);
         }
 
-        // Удаление товара из корзины
+        
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCart();
         }
 
-        // Обновление корзины
+        
         function updateCart() {
-            // Обновление счетчика товаров
+            
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             
-            // Обновление содержимого корзины
+            
             cartItemsContainer.innerHTML = '';
             let totalPrice = 0;
             
@@ -983,7 +983,7 @@
                     totalPrice += item.price * item.quantity;
                 });
                 
-                // Добавление обработчиков событий для кнопок удаления
+                
                 document.querySelectorAll('.cart-item-remove').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const productId = parseInt(e.target.getAttribute('data-id'));
@@ -992,11 +992,11 @@
                 });
             }
             
-            // Обновление общей стоимости
+            
             cartTotalPrice.textContent = `${totalPrice} руб.`;
         }
 
-        // Показать уведомление
+        
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
